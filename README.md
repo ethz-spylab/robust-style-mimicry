@@ -1,3 +1,9 @@
+# Adversarial Perturbations Cannot Reliably Protect Artists From Generative AI
+
+Robert Hönig, [Javier Rando](https://javirando.com/), [Nicholas Carlini](https://nicholas.carlini.com), [Florian Tramèr](https://floriantramer.com/) | SPY Lab (ETH Zurich) and Google Deepmind*
+
+Official repository for the paper [**Adversarial Perturbations Cannot Reliably Protect Artists From Generative AI**]().
+
 # Data
 
 We are releasing the dataset used to train our models and the generated images included in the user study. The dataset only contains data from historical artists. You can access the entire dataset at: https://drive.google.com/file/d/11u6ITxkrAvWLYnry__9rm1QIOQbSKasT. The dataset is organized as follows:
