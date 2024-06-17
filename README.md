@@ -30,7 +30,7 @@ We are releasing the dataset used to train our models and the generated images i
     * `original`: original artwork from historical artists, as exported from WikiArt
     * `protected`: contains folders for each protection method (`antidb`, `mist`, `glaze`), with the original artwork after applying the perturbations
     * `protected+preprocessed`: contains the same images as `protected`, but with 3 robust mimicry methods applied for each protection (`diffpure`, `noisy_upscaling`, `impress++`). Note: Impress++ only includes gaussian noising and reverse optimization preprocessing steps, as the remaining steps are applied during sampling.
-* `generated_images`: contains the generated images from the resulting models, with one image for each protection. The `no-protections` folder contains images generated from models finetuned directly on the original artwork, using the same structure as `generated_images` (folders for each protection and robust mimicry method) to match the different seeds used for each combination.
+* `generated_images`: contains the generated images for the evaluation prompts. There is one folder for each protection, with subfolders for each robust mimicry method. The `no-protections` folder contains images generated from models finetuned directly on the original artwork, using the same structure as `generated_images` (folders for each protection and robust mimicry method) to match the different seeds used for each combination. The `naive-mimicry` folder contains generations from models finetuned directly on protected images without any robust mimicry method.
 
 
 ## Examples
