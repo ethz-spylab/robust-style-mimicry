@@ -148,6 +148,8 @@ python generate.py --in_dir '<MODEL_DIR>' --out_dir '<GEN_IMGS_DIR>' --prompts p
 ### Robust Style Mimicry with Noisy Upscaling against images from Edward Hopper protected with Glaze.
 ```shell
 # First, glaze images in training_images/original/wikiart_edward-hopper using the Glaze app. Store the protected images in training_images/protected/wikiart_edward-hopper.
+# Alternatively, you can download our training images using the following command:
+# gdown https://drive.google.com/uc?id=11u6ITxkrAvWLYnry__9rm1QIOQbSKasT
 
 source robustmimicry/bin/activate  # Activate environment.
 
