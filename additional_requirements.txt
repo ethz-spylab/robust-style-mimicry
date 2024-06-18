@@ -1,2 +1,4 @@
 scikit-image
 k-diffusion
+gdown
+setuptools==69.5.1
