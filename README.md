@@ -32,27 +32,6 @@ We are releasing the dataset used to train our models and the generated images i
     * `protected+preprocessed`: contains the same images as `protected`, but with 3 robust mimicry methods applied for each protection (`diffpure`, `noisy_upscaling`, `impress++`). Note: Impress++ only includes gaussian noising and reverse optimization preprocessing steps, as the remaining steps are applied during sampling.
 * `generated_images`: contains the generated images for the evaluation prompts. There is one folder for each protection, with subfolders for each robust mimicry method. The `no-protections` folder contains images generated from models finetuned directly on the original artwork, using the same structure as `generated_images` (folders for each protection and robust mimicry method) to match the different seeds used for each combination. The `naive-mimicry` folder contains generations from models finetuned directly on protected images without any robust mimicry method.
 
-
-## Examples
-
-### Robust Style Mimicry with Noisy Upscaling against images from Edward Hopper protected with Glaze.
-```shell
-# First, glaze images in training_images/original/wikiart_edward-hopper using the Glaze app. Store the protected images in training_images/protected/wikiart_edward-hopper.
-
-source robustmimicry/bin/activate  # Activate environment.
-
-python caption.py --in_dir 'training_images/protected/glaze/wikiart_edward-hopper' --out_dir 'training_images/protected/glaze/wikiart_edward-hopper'  # Generate captions for protected images.
-
-python noise.py --in_dir 'training_images/protected/glaze/wikiart_edward-hopper' --out_dir 'training_images/protected+preprocessed/glaze/wikiart_edward-hopper' --gaussian_noise 0.1  # Process protected images.
-python upscale.py --in_dir 'training_images/protected+preprocessed/glaze/wikiart_edward-hopper' --out_dir 'training_images/protected+preprocessed/glaze/wikiart_edward-hopper'  # Process protected images.
-
-
-python finetune.py --in_dir 'training_images/protected+preprocessed/glaze/wikiart_edward-hopper' --out_dir 'models/glaze_noisy_upscale_edward-hopper'  # Train Stable Diffusion 2.1 on the processed images with their captions.
-
-python generate.py --in_dir 'models/glaze_noisy_upscale_edward-hopper' --out_dir 'generated_images/glaze/noisy_upscaling/wikiart_edward-hopper' --prompts prompts.txt  # Generate images.
-```
-
-
 ## Requirements
 
 We verified our code for the requirements below. Different configurations may or may not work.
@@ -72,6 +51,8 @@ Glaze is only available on Windows and macOS. We ran Glaze on a Windows VM on Go
 Clone `diffusers` and create the virtual environment `robustmimicry`:
 ```shell
 python -m venv robustmimicry
+source robustmimicry/bin/activate
+
 # This fork contains two very small modifications to the
 # text_to_image finetuning script and the upscaling pipeline.
 git clone https://github.com/roberthoenig/diffusers
@@ -161,3 +142,23 @@ python finetune.py --in_dir '<PROCESSED_PROTECTED_TRAIN_IMGS>' --out_dir '<MODEL
 ```shell
 python generate.py --in_dir '<MODEL_DIR>' --out_dir '<GEN_IMGS_DIR>' --prompts prompts.txt
 ```
+
+## Examples
+
+### Robust Style Mimicry with Noisy Upscaling against images from Edward Hopper protected with Glaze.
+```shell
+# First, glaze images in training_images/original/wikiart_edward-hopper using the Glaze app. Store the protected images in training_images/protected/wikiart_edward-hopper.
+
+source robustmimicry/bin/activate  # Activate environment.
+
+python caption.py --in_dir 'training_images/protected/glaze/wikiart_edward-hopper' --out_dir 'training_images/protected/glaze/wikiart_edward-hopper'  # Generate captions for protected images.
+
+python noise.py --in_dir 'training_images/protected/glaze/wikiart_edward-hopper' --out_dir 'training_images/protected+preprocessed/glaze/wikiart_edward-hopper' --gaussian_noise 0.1  # Process protected images.
+python upscale.py --in_dir 'training_images/protected+preprocessed/glaze/wikiart_edward-hopper' --out_dir 'training_images/protected+preprocessed/glaze/wikiart_edward-hopper'  # Process protected images.
+
+
+python finetune.py --in_dir 'training_images/protected+preprocessed/glaze/wikiart_edward-hopper' --out_dir 'models/glaze_noisy_upscale_edward-hopper'  # Train Stable Diffusion 2.1 on the processed images with their captions.
+
+python generate.py --in_dir 'models/glaze_noisy_upscale_edward-hopper' --out_dir 'generated_images/glaze/noisy_upscaling/wikiart_edward-hopper' --prompts prompts.txt  # Generate images.
+```
+
