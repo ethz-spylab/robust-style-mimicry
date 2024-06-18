@@ -44,4 +44,7 @@ args = parser.parse_args()
 process_dir(args.in_dir, args.out_dir)
 
 import shutil
-shutil.copyfile(os.path.join(args.in_dir, 'metadata.csv'), os.path.join(args.out_dir, 'metadata.csv'))
+try:
+    shutil.copyfile(os.path.join(args.in_dir, 'metadata.csv'), os.path.join(args.out_dir, 'metadata.csv'))
+except shutil.SameFileError:
+    pass
