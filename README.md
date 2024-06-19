@@ -2,7 +2,7 @@
 
 [Robert Hönig](https://github.com/roberthoenig)<sup>1</sup>, [Javier Rando](https://javirando.com/)<sup>1</sup>, [Nicholas Carlini](https://nicholas.carlini.com)<sup>2</sup>, [Florian Tramèr](https://floriantramer.com/)<sup>1</sup> | <sup>1</sup>SPY Lab (ETH Zurich) and <sup>2</sup>Google Deepmind.
 
-Official repository for the paper [**Adversarial Perturbations Cannot Reliably Protect Artists From Generative AI**]().
+Official repository for the paper [**Adversarial Perturbations Cannot Reliably Protect Artists From Generative AI**](http://arxiv.org/abs/2406.12027).
 
 ![teaser](teaser.png)
 
